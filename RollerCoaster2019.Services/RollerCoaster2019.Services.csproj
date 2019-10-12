@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ManageCoaster\IManageCoasterServiceOld.cs" />
+    <Compile Remove="ManageCoaster\ManageCoasterServiceOld.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RollerCoaster2019.Contracts\RollerCoaster2019.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
