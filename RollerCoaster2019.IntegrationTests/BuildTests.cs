@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MockLibrary;
 using RollerCoaster2019.Logic;
 using RollerCoaster2019.Logic.Builder;
+using RollerCoaster2019.Logic.Builder.DataTypes;
+using RollerCoaster2019.Logic.DataTypes;
 using System.Linq;
 
 namespace RollerCoaster2019.IntegrationTests
@@ -47,18 +49,18 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, Contracts.BuildActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
                     Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
-                    Assert.AreEqual(Contracts.TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
-                    Assert.AreEqual(Contracts.TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
+                    Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
+                    Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
                     Assert.AreEqual(false, observedBuildActionDescriptor.AutoLooped);
-                    Assert.AreEqual(Contracts.TrackType.Stright, coaster.Tracks[66].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Stright, coaster.Tracks[65].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Stright, coaster.Tracks[64].TrackType);
+                    Assert.AreEqual(TrackType.Stright, coaster.Tracks[66].TrackType);
+                    Assert.AreEqual(TrackType.Stright, coaster.Tracks[65].TrackType);
+                    Assert.AreEqual(TrackType.Stright, coaster.Tracks[64].TrackType);
                 },
                 serviceCollection => ConfigureServices(serviceCollection)
             );
@@ -78,18 +80,18 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, Contracts.BuildActionType.Left);
+                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Left);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
                     Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
-                    Assert.AreEqual(Contracts.TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
-                    Assert.AreEqual(Contracts.TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
+                    Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
+                    Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
                     Assert.AreEqual(false, observedBuildActionDescriptor.AutoLooped);
-                    Assert.AreEqual(Contracts.TrackType.Left, coaster.Tracks[66].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Left, coaster.Tracks[65].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Left, coaster.Tracks[64].TrackType);
+                    Assert.AreEqual(TrackType.Left, coaster.Tracks[66].TrackType);
+                    Assert.AreEqual(TrackType.Left, coaster.Tracks[65].TrackType);
+                    Assert.AreEqual(TrackType.Left, coaster.Tracks[64].TrackType);
                 },
                 serviceCollection => ConfigureServices(serviceCollection)
             );
@@ -109,18 +111,18 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, Contracts.BuildActionType.Right);
+                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Right);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
                     Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
-                    Assert.AreEqual(Contracts.TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
-                    Assert.AreEqual(Contracts.TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
+                    Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
+                    Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
                     Assert.AreEqual(false, observedBuildActionDescriptor.AutoLooped);
-                    Assert.AreEqual(Contracts.TrackType.Right, coaster.Tracks[66].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Right, coaster.Tracks[65].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Right, coaster.Tracks[64].TrackType);
+                    Assert.AreEqual(TrackType.Right, coaster.Tracks[66].TrackType);
+                    Assert.AreEqual(TrackType.Right, coaster.Tracks[65].TrackType);
+                    Assert.AreEqual(TrackType.Right, coaster.Tracks[64].TrackType);
                 },
                 serviceCollection => ConfigureServices(serviceCollection)
             );
@@ -140,18 +142,18 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, Contracts.BuildActionType.Up);
+                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Up);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
                     Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
-                    Assert.AreEqual(Contracts.TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
-                    Assert.AreEqual(Contracts.TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
+                    Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
+                    Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
                     Assert.AreEqual(false, observedBuildActionDescriptor.AutoLooped);
-                    Assert.AreEqual(Contracts.TrackType.Up, coaster.Tracks[66].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Up, coaster.Tracks[65].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Up, coaster.Tracks[64].TrackType);
+                    Assert.AreEqual(TrackType.Up, coaster.Tracks[66].TrackType);
+                    Assert.AreEqual(TrackType.Up, coaster.Tracks[65].TrackType);
+                    Assert.AreEqual(TrackType.Up, coaster.Tracks[64].TrackType);
                 },
                 serviceCollection => ConfigureServices(serviceCollection)
             );
@@ -171,19 +173,19 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    uut.Build(coaster, Contracts.BuildActionType.Up);
-                    var observedBuildActionDescriptor = uut.Build(coaster, Contracts.BuildActionType.Down);
+                    uut.Build(coaster, BuildActionType.Up);
+                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Down);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
                     Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
-                    Assert.AreEqual(Contracts.TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
-                    Assert.AreEqual(Contracts.TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
+                    Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
+                    Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
                     Assert.AreEqual(false, observedBuildActionDescriptor.AutoLooped);
-                    Assert.AreEqual(Contracts.TrackType.Down, coaster.Tracks[69].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Down, coaster.Tracks[68].TrackType);
-                    Assert.AreEqual(Contracts.TrackType.Down, coaster.Tracks[67].TrackType);
+                    Assert.AreEqual(TrackType.Down, coaster.Tracks[69].TrackType);
+                    Assert.AreEqual(TrackType.Down, coaster.Tracks[68].TrackType);
+                    Assert.AreEqual(TrackType.Down, coaster.Tracks[67].TrackType);
                 },
                 serviceCollection => ConfigureServices(serviceCollection)
             );
@@ -203,14 +205,14 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var x = uut.Build(coaster, Contracts.BuildActionType.Stright);
-                    var observedBuildActionDescriptor = uut.Build(coaster, Contracts.BuildActionType.Back);
+                    var x = uut.Build(coaster, BuildActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Back);
 
                     //Assert
                     Assert.AreEqual(0, observedBuildActionDescriptor.TracksAdded);
                     Assert.AreEqual(3, observedBuildActionDescriptor.TracksRemoved);
-                    Assert.AreEqual(Contracts.TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
-                    Assert.AreEqual(Contracts.TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
+                    Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
+                    Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
                     Assert.AreEqual(false, observedBuildActionDescriptor.AutoLooped);
                 },
@@ -220,7 +222,6 @@ namespace RollerCoaster2019.IntegrationTests
 
         private IServiceCollection ConfigureServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<IMathHelper, MathHelper>();
             serviceCollection.AddSingleton<IUserActions, UserActions>();
             serviceCollection.AddSingleton<IBuildActionOrchestrator, BuilderOrchestrator>();
             serviceCollection.AddSingleton<IActionOrchestrator, ActionOrchestrator>();

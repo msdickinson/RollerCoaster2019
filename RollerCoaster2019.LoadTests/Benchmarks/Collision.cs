@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using RollerCoaster2019.Contracts;
 using RollerCoaster2019.Logic;
 using RollerCoaster2019.Logic.Builder;
+using RollerCoaster2019.Logic.Builder.DataTypes;
+using RollerCoaster2019.Logic.DataTypes;
 
 namespace RollerCoaster2019.LoadTests.Benchmarks
 {
@@ -37,13 +39,12 @@ namespace RollerCoaster2019.LoadTests.Benchmarks
         {
             for (int i = 0; i < 5000; i++)
             {
-                _userActions.Build(_coaster, Contracts.BuildActionType.Stright);
+                _userActions.Build(_coaster, BuildActionType.Stright);
             }
         }
 
         private IServiceCollection ConfigureServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<IMathHelper, MathHelper>();
             serviceCollection.AddSingleton<IUserActions, UserActions>();
             serviceCollection.AddSingleton<IBuildActionOrchestrator, BuilderOrchestrator>();
             serviceCollection.AddSingleton<IActionOrchestrator, ActionOrchestrator>();

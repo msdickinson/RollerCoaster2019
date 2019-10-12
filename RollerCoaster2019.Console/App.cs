@@ -60,13 +60,22 @@ namespace RollerCoaster2019.Console
         internal string ProcessCoasterInput(Coaster coaster)
         {
             var input = System.Console.ReadLine();
-
-            if (input == "1")
+            BuildActionType buildActionType;
+            switch(input)
             {
-                var result = _userActions.Build(coaster, BuildActionType.Stright);
-                System.Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(result));
+                case "1":
+                    buildActionType = BuildActionType.Stright;
+                    break;
+                default:
+                      return input;
             }
 
+            var result = _userActions.Build(coaster, buildActionType);
+            System.Console.WriteLine($"{buildActionType.ToString()}");
+            System.Console.WriteLine(
+                JsonConvert.SerializeObject(result,
+                                            Formatting.Indented,
+                                            new Newtonsoft.Json.Converters.StringEnumConverter()));
 
             return input;
         }
