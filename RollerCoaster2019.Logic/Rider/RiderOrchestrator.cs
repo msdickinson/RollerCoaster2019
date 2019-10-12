@@ -12,7 +12,6 @@ namespace RollerCoaster2019.Logic.Rider
         {
             var cartLocation = new CartLocation();
 
-
             return cartLocation;
         }
     }
