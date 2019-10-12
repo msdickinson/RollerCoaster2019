@@ -2,7 +2,7 @@
 {
     public class BuildActionDescriptor
     {
-        public bool Successful { get; set; } = false;
+        public bool Successful { get; set; } = true;
         public TaskResults BuildActionResult { get; set; } = TaskResults.NotSet;
         public TaskResults AutoCorrectResult { get; set; } = TaskResults.NotSet;
         public bool FinshedCoaster { get; set; } = false;

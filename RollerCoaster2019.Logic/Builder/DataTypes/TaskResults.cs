@@ -1,4 +1,7 @@
-﻿namespace RollerCoaster2019.Logic.Builder.DataTypes
+﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
+
+namespace RollerCoaster2019.Logic.Builder.DataTypes
 {
     public enum TaskResults
     {

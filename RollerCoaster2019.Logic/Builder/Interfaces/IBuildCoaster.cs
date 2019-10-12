@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using RollerCoaster2019.Logic.Builder;
+using RollerCoaster2019.Logic.Builder.DataTypes;
+using RollerCoaster2019.Logic.DataTypes;
 
 namespace RollerCoaster2019.Contracts
 {

@@ -1,4 +1,6 @@
-﻿using RollerCoaster2019.Logic.DataTypes;
+﻿using Newtonsoft.Json.Converters;
+using RollerCoaster2019.Logic.DataTypes;
+using System.Text.Json.Serialization;
 
 namespace RollerCoaster2019.Logic.Builder.DataTypes
 {

@@ -1,37 +1,36 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using RollerCoaster2019.Contracts;
+using Newtonsoft.Json;
 using RollerCoaster2019.Logic;
-using RollerCoaster2019.Services.ManageCoaster;
+using RollerCoaster2019.Logic.Builder.DataTypes;
+using RollerCoaster2019.Logic.DataTypes;
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace RollerCoaster2019.Console
 {
     public class App : IApp
     {
-        private readonly ILogger<App> _logger;
         private readonly IUserActions _userActions;
-        internal readonly IManageCoasterService _manageCoasterService;
-        private readonly IOptions<DBConnection> _config;
 
-        public App(ILogger<App> logger,
-                   IUserActions userActions,
-                   IManageCoasterService manageCoasterService,
-                   IOptions<DBConnection> config)
+        public App(IUserActions userActions)
         {
-            _logger = logger;
             _userActions = userActions;
-            _manageCoasterService = manageCoasterService;
-            _config = config;
         }
 
         public async Task Run()
         {
             var coaster = _userActions.CreateCoaster();
-            _userActions.Build(coaster, Contracts.BuildActionType.Stright);
-            _userActions.Build(coaster, Contracts.BuildActionType.Back);
-            _userActions.Build(coaster, Contracts.BuildActionType.Stright);
+            var buildActions = new List<BuildActionType>
+            {
+                BuildActionType.Stright,
+                BuildActionType.Back,
+                BuildActionType.Stright
+            };
+
+            ProcessBuildActions(coaster, buildActions);
+
             string input = "";
             while (input != "E")
             {
@@ -42,28 +41,41 @@ namespace RollerCoaster2019.Console
             await Task.CompletedTask;
         }
 
+
+        internal void ProcessBuildActions(Coaster coaster, List<BuildActionType> buildActions)
+        {
+            foreach(var buildAction in buildActions)
+            {
+                var result = _userActions.Build(coaster, buildAction);
+                System.Console.WriteLine($"{buildAction.ToString()}");
+
+                System.Console.WriteLine(
+                    JsonConvert.SerializeObject(result, 
+                                                Formatting.Indented,
+                                                new Newtonsoft.Json.Converters.StringEnumConverter()));
+                                                
+                System.Console.WriteLine("");
+            }
+        }
         internal string ProcessCoasterInput(Coaster coaster)
         {
             var input = System.Console.ReadLine();
-            try
-            {
-                if (input == "1")
-                {
-                    _userActions.Build(coaster, Contracts.BuildActionType.Stright);
-                }
 
-            }
-            catch(Exception ex)
+            if (input == "1")
             {
-                _logger.LogError($"Input: {input}", ex);
+                var result = _userActions.Build(coaster, BuildActionType.Stright);
+                System.Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(result));
             }
-          
+
+
             return input;
         }
 
         internal void DisplayCoasterConsole()
         {
-            System.Console.Clear();
+            System.Console.WriteLine("");
+            System.Console.WriteLine("");
+            System.Console.WriteLine("");
             System.Console.WriteLine("RC User Actions");
             System.Console.WriteLine("1: Build Left");
             System.Console.WriteLine("2: Build Right");

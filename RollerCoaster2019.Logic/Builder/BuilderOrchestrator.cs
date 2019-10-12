@@ -1,4 +1,6 @@
 ﻿using RollerCoaster2019.Contracts;
+using RollerCoaster2019.Logic.Builder.DataTypes;
+using RollerCoaster2019.Logic.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,20 +16,15 @@ namespace RollerCoaster2019.Logic.Builder
 
         internal const float START_YAW = 0;
         internal const float START_PITCH = 0;
-        internal const float START_ROLL = 0;
 
         internal const float STANDARD_ANGLE_CHANGE = 7.5f;
         internal const float TRACK_LENGTH = (float)7.7;
 
         internal readonly ITrackRules _rules;
-        internal readonly IMathHelper _mathHelper;
-
-
-        public BuilderOrchestrator(ITrackRules rules,
-                                       IMathHelper mathHelper)
+        
+        public BuilderOrchestrator(ITrackRules rules)
         {
             _rules = rules;
-            _mathHelper = mathHelper;
         }
 
         public TaskResults ProcessBuildActions(IBuildCoaster coaster, IEnumerable<BuildAction> buildActions)
@@ -135,9 +132,9 @@ namespace RollerCoaster2019.Logic.Builder
             }
 
             //Determine X, Y, And Z
-            x = x + (float)(Math.Cos(_mathHelper.ToRadians(yaw)) * Math.Cos(_mathHelper.ToRadians(pitch)) * TRACK_LENGTH);
-            y = y + (float)(Math.Sin(_mathHelper.ToRadians(yaw)) * Math.Cos(_mathHelper.ToRadians(pitch)) * TRACK_LENGTH);
-            z = z + (float)(Math.Sin(_mathHelper.ToRadians(pitch)) * TRACK_LENGTH);
+            x = x + (float)(Math.Cos(ToRadians(yaw)) * Math.Cos(ToRadians(pitch)) * TRACK_LENGTH);
+            y = y + (float)(Math.Sin(ToRadians(yaw)) * Math.Cos(ToRadians(pitch)) * TRACK_LENGTH);
+            z = z + (float)(Math.Sin(ToRadians(pitch)) * TRACK_LENGTH);
 
             //Check Rules
             TaskResults result = VaildateRulesForTrack(coaster, x, y, z, yaw, pitch, buildAction.TrackType);
@@ -192,6 +189,11 @@ namespace RollerCoaster2019.Logic.Builder
      
 
             return result;
+        }
+
+        public float ToRadians(float degrees)
+        {
+            return (float)(Math.PI * degrees / 180.0);
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using RollerCoaster2019.Contracts;
+using RollerCoaster2019.Logic.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,6 @@ namespace RollerCoaster2019.Logic.Builder
 {
     public class TrackRules : ITrackRules
     {
-        internal readonly IMathHelper _mathHelper;
 
         internal const float BUILD_AREA_SIZE_X = 1000;
         internal const float BUILD_AREA_SIZE_Y = 1025;
@@ -15,9 +15,9 @@ namespace RollerCoaster2019.Logic.Builder
         internal const float CART_HEIGHT = 5f;
         public const float TRACK_LENGTH_2X = (float)7.7 * 2;
 
-        public TrackRules(IMathHelper mathHelper)
+        public TrackRules()
         {
-            _mathHelper = mathHelper;
+
         }
 
         public bool MaxX(float x)
@@ -54,7 +54,9 @@ namespace RollerCoaster2019.Logic.Builder
 
         public bool MinZ(float yaw, float pitch, float z)
         {
-            if ((pitch > 90 && pitch < 270) && (z < (0 + CART_HEIGHT * -1 * Math.Cos(_mathHelper.ToRadians(pitch)))))
+            if (pitch > 90 &&
+                pitch < 270 &&
+                z < (0 + CART_HEIGHT * -1 * (Math.PI / 180) * pitch))
                 return false;
             else if (z < 0)
                 return false;

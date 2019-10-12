@@ -1,4 +1,6 @@
 ﻿using RollerCoaster2019.Logic.Builder;
+using RollerCoaster2019.Logic.Builder.DataTypes;
+using RollerCoaster2019.Logic.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

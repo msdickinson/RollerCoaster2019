@@ -39,6 +39,7 @@ namespace RollerCoaster2019.Logic.Builder
             if (buildActionDescriptor.BuildActionResult != TaskResults.Successful &&
                 buildActionDescriptor.AutoCorrectResult != TaskResults.Successful)
             {
+                buildActionDescriptor.Successful = false;
                 return buildActionDescriptor;
             }
 
