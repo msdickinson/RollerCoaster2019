@@ -15,6 +15,5 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RollerCoaster2019.Logic\RollerCoaster2019.Logic.csproj" />
-    <ProjectReference Include="..\RollerCoaster2019.Services\RollerCoaster2019.Services.csproj" />
   </ItemGroup>
 </Project>
