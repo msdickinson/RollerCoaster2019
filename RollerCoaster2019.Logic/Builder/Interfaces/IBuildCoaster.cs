@@ -10,7 +10,6 @@ namespace RollerCoaster2019.Contracts
         int TrackCountAfterStartingArea { get; set; }
         bool TracksBuiltAfterStartingArea { get; set; }
         bool TracksFinshed { get; set; }
-        bool TracksInFinshArea { get; set; }
         bool TracksStarted { get; set; }
 
         int GetFirstSetCount();

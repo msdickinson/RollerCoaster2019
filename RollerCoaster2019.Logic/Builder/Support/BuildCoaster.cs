@@ -10,21 +10,21 @@ namespace RollerCoaster2019.Contracts
 {
     public class BuildCoaster : IBuildCoaster
     {
-        private Coaster _baseCoaster;
-        private Coaster _extensionCoaster;
+        private readonly Coaster _baseCoaster;
+        private readonly Coaster _extensionCoaster;
         int trackOffset = 0;
         //int chunkOffset = 0;
 
         public BuildCoaster(Coaster coaster)
         {
             _baseCoaster = coaster;
-            _extensionCoaster = new Coaster();
-            _extensionCoaster.Chunks = new List<int>();
-            _extensionCoaster.Tracks = new List<Track>();
-
-            _extensionCoaster.TracksFinshed = _baseCoaster.TracksFinshed;
-            _extensionCoaster.TracksInFinshArea = _baseCoaster.TracksInFinshArea;
-            _extensionCoaster.TracksStarted = _baseCoaster.TracksStarted;
+            _extensionCoaster = new Coaster
+            {
+                Chunks = new List<int>(),
+                Tracks = new List<Track>(),
+                TracksFinshed = _baseCoaster.TracksFinshed,
+                TracksStarted = _baseCoaster.TracksStarted
+            };
 
             _totalBaseTracks = _baseCoaster.Tracks.Count() - trackOffset;
         }
@@ -34,11 +34,7 @@ namespace RollerCoaster2019.Contracts
             get => _extensionCoaster.TracksFinshed;
             set => _extensionCoaster.TracksFinshed = value;
         }
-        public bool TracksInFinshArea
-        {
-            get => _extensionCoaster.TracksInFinshArea;
-            set => _extensionCoaster.TracksInFinshArea = value;
-        }
+
         public bool TracksStarted
         {
             get => _extensionCoaster.TracksStarted;
@@ -86,7 +82,6 @@ namespace RollerCoaster2019.Contracts
 
             //Misc
             _baseCoaster.TracksFinshed = _extensionCoaster.TracksFinshed;
-            _baseCoaster.TracksInFinshArea = _extensionCoaster.TracksInFinshArea;
             _baseCoaster.TracksStarted = _extensionCoaster.TracksStarted;
 
 
@@ -136,7 +131,7 @@ namespace RollerCoaster2019.Contracts
 
             if (_baseCoaster.Chunks.Count() >= 2)
             {
-                trackOffset = trackOffset - 1;
+                trackOffset--;
                 _totalBaseTracks = _baseCoaster.Tracks.Count() - trackOffset;
                 return;
             }
@@ -157,7 +152,6 @@ namespace RollerCoaster2019.Contracts
             _extensionCoaster.Chunks.Clear();
             _extensionCoaster.Tracks.Clear();
             _extensionCoaster.TracksFinshed = _baseCoaster.TracksFinshed;
-            _extensionCoaster.TracksInFinshArea = _baseCoaster.TracksInFinshArea;
             _extensionCoaster.TracksStarted = _baseCoaster.TracksStarted;
         }
 

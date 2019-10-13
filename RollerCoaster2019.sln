@@ -27,6 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 Tools", "5 Tools", "{C770
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MockLibrary", "MockLibrary\MockLibrary.csproj", "{5A3A46DB-58A5-49D9-86DC-16E8D2442F4E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9 Misc", "9 Misc", "{88FC1C44-DFFA-4E1A-B0BC-895C3AB9AF96}"
+	ProjectSection(SolutionItems) = preProject
+		CreateNugetPackage.ps1 = CreateNugetPackage.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

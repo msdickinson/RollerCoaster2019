@@ -1,17 +1,13 @@
-﻿using BenchmarkDotNet.Running;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
 using RollerCoaster2019.Logic;
 using RollerCoaster2019.Logic.Builder;
-using System;
 using System.Threading.Tasks;
 
 namespace RollerCoaster2019.Console
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);

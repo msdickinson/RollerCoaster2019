@@ -68,7 +68,7 @@ namespace RollerCoaster2019.Logic.Builder
             var getFirstSetCount = coaster.GetFirstSetCount();
             var trackCount = coaster.TrackCount() - 3;
             Track track;
-            track = coaster.GetTrack(0);
+
             for (int i = getFirstSetCount; i < trackCount; i++)
             {
                 track = coaster.GetTrack(i);
