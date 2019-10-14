@@ -224,7 +224,7 @@ namespace RollerCoaster2019.IntegrationTests
         {
             serviceCollection.AddSingleton<IUserActions, UserActions>();
             serviceCollection.AddSingleton<IBuildActionOrchestrator, BuilderOrchestrator>();
-            serviceCollection.AddSingleton<IActionOrchestrator, ActionOrchestrator>();
+            serviceCollection.AddSingleton<IUserActionOrchestrator, UserActionOrchestrator>();
             serviceCollection.AddSingleton<IBuilderTasks, BuilderTasks>();
             serviceCollection.AddSingleton<ITrackRules, TrackRules>();
 

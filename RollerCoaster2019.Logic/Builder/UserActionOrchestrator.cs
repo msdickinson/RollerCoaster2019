@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RollerCoaster2019.Logic.Builder
 {
-    public class ActionOrchestrator : IActionOrchestrator
+    public class UserActionOrchestrator : IUserActionOrchestrator
     {
         internal const float FINSH_AREA_X = 260f;
         internal const float FINSH_AREA_Y = 5f;
@@ -17,7 +17,7 @@ namespace RollerCoaster2019.Logic.Builder
         internal readonly IServiceProvider _serviceProvider;
 
         internal readonly IBuilderTasks _builderTasks;
-        public ActionOrchestrator(IBuilderTasks builderTasks,
+        public UserActionOrchestrator(IBuilderTasks builderTasks,
                                            IServiceProvider serviceProvider)
         {
             _builderTasks = builderTasks;

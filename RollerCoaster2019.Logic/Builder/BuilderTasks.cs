@@ -19,51 +19,83 @@ namespace RollerCoaster2019.Logic.Builder
 
         public TaskResults BuildAction(IBuildCoaster coaster, BuildActionType buildActionType)
         {
+            var taskResults = TaskResults.NotSet;
             switch (buildActionType)
             {
                 case BuildActionType.CreateStartingTracks:
-                    return BuildStartingTracks(coaster);
+                    taskResults = BuildStartingTracks(coaster);    //Done
+                    break;
                 case BuildActionType.Stright:
-                    return BuildStright(coaster);
+                    taskResults = BuildStright(coaster);           //Done
+                    break;
                 case BuildActionType.Left:
-                    return BuildLeft(coaster);
+                    taskResults = BuildLeft(coaster);              //Done
+                    break;
                 case BuildActionType.Right:
-                    return BuildRight(coaster);
+                    taskResults = BuildRight(coaster);             //Done
+                    break;
                 case BuildActionType.Up:
-                    return BuildUp(coaster);
+                    taskResults = BuildUp(coaster);                //Done
+                    break;
                 case BuildActionType.Down:
-                    return BuildDown(coaster);
+                    taskResults = BuildDown(coaster);              //Done
+                    break;
                 case BuildActionType.Back:
-                    return RemoveChunk(coaster);
+                    taskResults = RemoveChunk(coaster);            //Done
+                    break;
                 case BuildActionType.AutoLoop:
-                    return AutoLoop(coaster);
+                    taskResults = AutoLoop(coaster);               //TODO
+                    break;
                 case BuildActionType.Loop:
-                    return BuildLoop(coaster);
+                    taskResults = BuildLoop(coaster);              //TODO
+                    break;
                 case BuildActionType.FinshCoaster:
-                    return FinshCoaster(coaster);
+                    taskResults = FinshCoaster(coaster);           //TODO
+                    break;
                 case BuildActionType.ToGround:
-                    return BuildToGround(coaster);
+                    taskResults = BuildToGround(coaster);          //TODO
+                    break;
                 case BuildActionType.Downward:
-                    return BuildDownward(coaster);
+                    taskResults = BuildDownward(coaster);          //TODO
+                    break;
                 case BuildActionType.Upward:
-                    return BuildUpward(coaster);
+                    taskResults = BuildUpward(coaster);            //TODO
+                    break;
                 case BuildActionType.FixMinX:
-                    return FixMinX(coaster);
+                    taskResults = FixMinX(coaster);                //TODO
+                    break;
                 case BuildActionType.FixMinY:
-                    return FixMinY(coaster);
+                    taskResults = FixMinY(coaster);                //TODO
+                    break;
                 case BuildActionType.FixMinZ:
-                    return FixMinZ(coaster);
+                    taskResults = FixMinZ(coaster);                //TODO
+                    break;
                 case BuildActionType.FixMaxX:
-                    return FixMaxX(coaster);
+                    taskResults = FixMaxX(coaster);                //TODO
+                    break;
                 case BuildActionType.FixMaxY:
-                    return FixMaxY(coaster);
+                    taskResults = FixMaxY(coaster);                //TODO
+                    break;
                 case BuildActionType.FixMaxZ:
-                    return FixMaxZ(coaster);
+                    taskResults = FixMaxZ(coaster);                //TODO
+                    break;
                 case BuildActionType.FixCollision:
-                    return FixCollision(coaster);
+                    taskResults = FixCollision(coaster);           //TODO
+                    break;
                 default:
                     return TaskResults.UnsupportedTaskType;
             }
+
+            if(taskResults == TaskResults.Successful)
+            {
+                coaster.Merge();
+            }
+            else
+            {
+                coaster.ResetCoaster();
+            }
+
+            return taskResults;
         }
 
         internal TaskResults BuildStartingTracks(IBuildCoaster coaster)

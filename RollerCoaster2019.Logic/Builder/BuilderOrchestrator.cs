@@ -74,13 +74,11 @@ namespace RollerCoaster2019.Logic.Builder
 
         public TaskResults ProcessRemoveTracks(IBuildCoaster coaster, int count)
         {
-            if (!coaster.TracksBuiltAfterStartingTracks())
-            {
-                return TaskResults.CannotRemoveStartTracks;
-            }
+            //for (int i = 0; i < count; i++)
+            //{
+            //    coaster.PopTrack();
+            //}
 
-            coaster.PopTrack();
-           
             return TaskResults.Successful;
         }
 
@@ -170,22 +168,22 @@ namespace RollerCoaster2019.Logic.Builder
             if (coaster.TracksStarted == false || coaster.TracksFinshed == true)
                 return result;
 
-            if (!_rules.Collison(coaster, x, y, z))
+            if (!Collison(coaster, x, y, z))
                 return TaskResults.Collison;
 
-            if (!_rules.MaxX(x))
+            if (!MaxX(x))
                 return TaskResults.MaxX;
 
-            if (!_rules.MaxY(y))
+            if (!MaxY(y))
                 return TaskResults.MaxY;
 
-            if (!_rules.MinX(x))
+            if (!MinX(x))
                 return TaskResults.MinX;
 
-            if (!_rules.MinY(y))
+            if (!MinY(y))
                 return TaskResults.MinY;
 
-            if (!_rules.MinZ(yaw, pitch, z))
+            if (!MinZ(yaw, pitch, z))
                 return TaskResults.MinZ;
 
             return result;

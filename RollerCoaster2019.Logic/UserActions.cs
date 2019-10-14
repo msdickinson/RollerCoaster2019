@@ -9,8 +9,8 @@ namespace RollerCoaster2019.Logic
 {
     public class UserActions : IUserActions
     {
-        private readonly IActionOrchestrator _buildAction;
-        public UserActions(IActionOrchestrator buildActionTypeOrchestrator)
+        private readonly IUserActionOrchestrator _buildAction;
+        public UserActions(IUserActionOrchestrator buildActionTypeOrchestrator)
         {
             _buildAction = buildActionTypeOrchestrator;
         }
