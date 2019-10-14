@@ -29,6 +29,8 @@ namespace RollerCoaster2019.Logic.Builder
             var buildCoaster = new BuildCoaster(coaster);
             var buildActionType = ConvertToBuildActionType(userActionType);
 
+            var currentTrackCount = coaster.Tracks.Count;
+
             buildActionDescriptor.BuildActionResult = _builderTasks.BuildAction(buildCoaster, buildActionType);
 
             if (buildActionDescriptor.BuildActionResult != TaskResults.Successful)
@@ -52,6 +54,8 @@ namespace RollerCoaster2019.Logic.Builder
             {
                 buildActionDescriptor.AutoLooped = _builderTasks.BuildAction(buildCoaster, BuildActionType.AutoLoop);
             }
+
+            buildActionDescriptor.TrackChangeCount = coaster.Tracks.Count - currentTrackCount;
 
             return buildActionDescriptor;
         }

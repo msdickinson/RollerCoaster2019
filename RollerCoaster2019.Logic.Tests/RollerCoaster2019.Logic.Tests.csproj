@@ -17,4 +17,10 @@
     <ProjectReference Include="..\RollerCoaster2019.Logic\RollerCoaster2019.Logic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Builder\DataTypes\" />
+    <Folder Include="DataTypes\" />
+    <Folder Include="Rider\DataTypes\" />
+  </ItemGroup>
+
 </Project>

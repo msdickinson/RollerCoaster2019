@@ -19,7 +19,7 @@ namespace RollerCoaster2019.Console
         public async Task Run()
         {
             var coaster = _userActions.CreateCoaster();
-            var buildActions = new List<BuildActionType>
+            var buildActions = new List<userActionType>
             {
                 BuildActionType.Stright,
                 BuildActionType.Back,
@@ -39,12 +39,12 @@ namespace RollerCoaster2019.Console
         }
 
 
-        internal void ProcessBuildActions(Coaster coaster, List<BuildActionType> buildActions)
+        internal void ProcessBuildActions(Coaster coaster, List<UserActionType> userActionTypes)
         {
-            foreach(var buildAction in buildActions)
+            foreach(var userActionType in userActionTypes)
             {
-                var result = _userActions.Build(coaster, buildAction);
-                System.Console.WriteLine($"{buildAction.ToString()}");
+                var result = _userActions.Build(coaster, userActionType);
+                System.Console.WriteLine($"{userActionType.ToString()}");
 
                 System.Console.WriteLine(
                     JsonConvert.SerializeObject(result, 
@@ -57,18 +57,18 @@ namespace RollerCoaster2019.Console
         internal string ProcessCoasterInput(Coaster coaster)
         {
             var input = System.Console.ReadLine();
-            BuildActionType buildActionType;
+            UserActionType userActionType;
             switch(input)
             {
                 case "1":
-                    buildActionType = BuildActionType.Stright;
+                    userActionType = UserActionType.Stright;
                     break;
                 default:
                       return input;
             }
 
-            var result = _userActions.Build(coaster, buildActionType);
-            System.Console.WriteLine($"{buildActionType.ToString()}");
+            var result = _userActions.Build(coaster, userActionType);
+            System.Console.WriteLine($"{userActionType.ToString()}");
             System.Console.WriteLine(
                 JsonConvert.SerializeObject(result,
                                             Formatting.Indented,

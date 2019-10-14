@@ -14,9 +14,9 @@ namespace RollerCoaster2019.Logic
         {
             _buildAction = buildActionTypeOrchestrator;
         }
-        public BuildActionDescriptor Build(Coaster coaster, BuildActionType buildActionType)
+        public BuildActionDescriptor Build(Coaster coaster, UserActionType uerActionType)
         {
-            return _buildAction.ProcessBuildAction(coaster, buildActionType);
+            return _buildAction.ProcessBuildAction(coaster, uerActionType);
         }
         public Coaster CreateCoaster()
         {
@@ -26,7 +26,7 @@ namespace RollerCoaster2019.Logic
                 Tracks = new List<Track>()
             };
 
-            _buildAction.ProcessBuildAction(coaster, BuildActionType.CreateStartingTracks);
+            _buildAction.ProcessBuildAction(coaster, UserActionType.CreateStartingTracks);
 
             return coaster;
         }

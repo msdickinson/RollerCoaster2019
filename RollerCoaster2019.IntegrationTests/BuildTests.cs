@@ -52,8 +52,7 @@ namespace RollerCoaster2019.IntegrationTests
                     var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
 
                     //Assert
-                    Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
-                    Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
+                    Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
                     Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
                     Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
@@ -83,8 +82,7 @@ namespace RollerCoaster2019.IntegrationTests
                     var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Left);
 
                     //Assert
-                    Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
-                    Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
+                    Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
                     Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
                     Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
@@ -114,8 +112,7 @@ namespace RollerCoaster2019.IntegrationTests
                     var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Right);
 
                     //Assert
-                    Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
-                    Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
+                    Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
                     Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
                     Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
@@ -145,8 +142,7 @@ namespace RollerCoaster2019.IntegrationTests
                     var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Up);
 
                     //Assert
-                    Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
-                    Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
+                    Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
                     Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
                     Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
@@ -177,8 +173,7 @@ namespace RollerCoaster2019.IntegrationTests
                     var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Down);
 
                     //Assert
-                    Assert.AreEqual(3, observedBuildActionDescriptor.TracksAdded);
-                    Assert.AreEqual(0, observedBuildActionDescriptor.TracksRemoved);
+                    Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
                     Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
                     Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
@@ -209,8 +204,7 @@ namespace RollerCoaster2019.IntegrationTests
                     var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Back);
 
                     //Assert
-                    Assert.AreEqual(0, observedBuildActionDescriptor.TracksAdded);
-                    Assert.AreEqual(3, observedBuildActionDescriptor.TracksRemoved);
+                    Assert.AreEqual(0, observedBuildActionDescriptor.TrackChangeCount);
                     Assert.AreEqual(TaskResults.Successful, observedBuildActionDescriptor.BuildActionResult);
                     Assert.AreEqual(TaskResults.NotSet, observedBuildActionDescriptor.AutoCorrectResult);
                     Assert.AreEqual(false, observedBuildActionDescriptor.FinshedCoaster);
@@ -226,7 +220,6 @@ namespace RollerCoaster2019.IntegrationTests
             serviceCollection.AddSingleton<IBuildActionOrchestrator, BuilderOrchestrator>();
             serviceCollection.AddSingleton<IUserActionOrchestrator, UserActionOrchestrator>();
             serviceCollection.AddSingleton<IBuilderTasks, BuilderTasks>();
-            serviceCollection.AddSingleton<ITrackRules, TrackRules>();
 
             return serviceCollection;
         }

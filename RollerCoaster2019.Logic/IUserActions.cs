@@ -5,7 +5,7 @@ namespace RollerCoaster2019.Logic
 {
     public interface IUserActions
     {
-        BuildActionDescriptor Build(Coaster coaster, BuildActionType buildActionType);
+        BuildActionDescriptor Build(Coaster coaster, UserActionType uerActionType);
         Coaster CreateCoaster();
     }
 }
