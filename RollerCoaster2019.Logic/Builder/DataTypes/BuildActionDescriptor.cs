@@ -5,9 +5,7 @@
         public bool Successful { get; set; } = true;
         public TaskResults BuildActionResult { get; set; } = TaskResults.NotSet;
         public TaskResults AutoCorrectResult { get; set; } = TaskResults.NotSet;
-        public bool FinshedCoaster { get; set; } = false;
-        public bool AutoLooped { get; set; } = false;
-        public int TracksAdded { get; set; } = 0;
-        public int TracksRemoved { get; set; } = 0;
+        public TaskResults FinshedCoaster { get; set; } = TaskResults.NotSet;
+        public TaskResults AutoLooped { get; set; } = TaskResults.NotSet;
     }
 }

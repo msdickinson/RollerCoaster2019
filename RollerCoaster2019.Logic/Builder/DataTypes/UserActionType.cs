@@ -1,6 +1,6 @@
 ﻿namespace RollerCoaster2019.Logic.Builder.DataTypes
 {
-    public enum BuildActionType 
+    public enum UserActionType
     {
         Stright,
         Left,
@@ -9,18 +9,10 @@
         Down,
         Back,
         CreateStartingTracks,
-        AutoLoop,
         Loop,
-        FinshCoaster,
         ToGround,
         Downward,
         Upward,
-        FixMinX,
-        FixMinY,
-        FixMinZ,
-        FixMaxX,
-        FixMaxY,
-        FixMaxZ,
-        FixCollision
+        FinshCoaster,
     }
 }

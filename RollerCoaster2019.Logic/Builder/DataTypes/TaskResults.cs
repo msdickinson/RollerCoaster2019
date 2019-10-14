@@ -19,6 +19,7 @@
         TracksAlreadyFinshed,
         UnsupportedTaskType,
         CannotRemoveStartTracks,
-        NotSet
+        NotSet,
+        MaxZ
     }
 }

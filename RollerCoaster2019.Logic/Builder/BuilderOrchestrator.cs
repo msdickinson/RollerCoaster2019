@@ -17,14 +17,18 @@ namespace RollerCoaster2019.Logic.Builder
         internal const float START_YAW = 0;
         internal const float START_PITCH = 0;
 
+        internal const float BUILD_AREA_SIZE_X = 1000;
+        internal const float BUILD_AREA_SIZE_Y = 1025;
+        internal const float BUILD_AREA_SIZE_Z = 10000;
+        internal const float CART_HEIGHT = 5f;
+        public const float TRACK_LENGTH_2X = (float)7.7 * 2;
+
         internal const float STANDARD_ANGLE_CHANGE = 7.5f;
         internal const float TRACK_LENGTH = (float)7.7;
-
-        internal readonly ITrackRules _rules;
         
-        public BuilderOrchestrator(ITrackRules rules)
+        public BuilderOrchestrator()
         {
-            _rules = rules;
+
         }
 
         public TaskResults ProcessBuildActions(IBuildCoaster coaster, IEnumerable<BuildAction> buildActions)
@@ -163,8 +167,6 @@ namespace RollerCoaster2019.Logic.Builder
         {
             TaskResults result = TaskResults.Successful;
 
-
-
             if (coaster.TracksStarted == false || coaster.TracksFinshed == true)
                 return result;
 
@@ -186,8 +188,6 @@ namespace RollerCoaster2019.Logic.Builder
             if (!_rules.MinZ(yaw, pitch, z))
                 return TaskResults.MinZ;
 
-     
-
             return result;
         }
 
@@ -196,5 +196,68 @@ namespace RollerCoaster2019.Logic.Builder
             return (float)(Math.PI * degrees / 180.0);
         }
 
+        public bool MaxX(float x)
+        {
+            if (x > BUILD_AREA_SIZE_X)
+                return false;
+            else
+                return true;
+        }
+
+        public bool MaxY(float y)
+        {
+            if (y > BUILD_AREA_SIZE_Y)
+                return false;
+            else
+                return true;
+        }
+
+        public bool MinX(float x)
+        {
+            if (x < 0)
+                return false;
+            else
+                return true;
+        }
+
+        public bool MinY(float y)
+        {
+            if (y < 0)
+                return false;
+            else
+                return true;
+        }
+
+        public bool MinZ(float yaw, float pitch, float z)
+        {
+            if (pitch > 90 &&
+                pitch < 270 &&
+                z < (0 + CART_HEIGHT * -1 * (Math.PI / 180) * pitch))
+                return false;
+            else if (z < 0)
+                return false;
+            else
+                return true;
+        }
+        public bool Collison(IBuildCoaster coaster, float x, float y, float z)
+        {
+            var getFirstSetCount = coaster.GetFirstSetCount();
+            var trackCount = coaster.TrackCount() - 3;
+            Track track;
+
+            for (int i = getFirstSetCount; i < trackCount; i++)
+            {
+                track = coaster.GetTrack(i);
+                if (Math.Sqrt(
+                                (x - track.X) * (x - track.X) +
+                                (y - track.Y) * (y - track.Y) +
+                                (z - track.Z) * (z - track.Z)
+                              ) <= TRACK_LENGTH_2X)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
