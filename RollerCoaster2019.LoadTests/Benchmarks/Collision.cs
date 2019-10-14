@@ -48,7 +48,7 @@ namespace RollerCoaster2019.LoadTests.Benchmarks
             serviceCollection.AddSingleton<IUserActions, UserActions>();
             serviceCollection.AddSingleton<IBuildActionOrchestrator, BuilderOrchestrator>();
             serviceCollection.AddSingleton<IUserActionOrchestrator, UserActionOrchestrator>();
-            serviceCollection.AddSingleton<IBuilderTasks, BuilderTasks>();
+            serviceCollection.AddSingleton<IBuilderTasksOrchestrator, BuilderTasksOrchestrator>();
 
             return serviceCollection;
         }

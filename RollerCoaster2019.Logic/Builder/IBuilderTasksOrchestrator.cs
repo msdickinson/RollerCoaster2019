@@ -3,7 +3,7 @@ using RollerCoaster2019.Logic.Builder.DataTypes;
 
 namespace RollerCoaster2019.Logic.Builder
 {
-    public interface IBuilderTasks
+    public interface IBuilderTasksOrchestrator
     {
         TaskResults BuildAction(IBuildCoaster coaster, BuildActionType buildActionType);
     }

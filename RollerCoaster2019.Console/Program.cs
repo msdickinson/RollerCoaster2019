@@ -26,7 +26,7 @@ namespace RollerCoaster2019.Console
             services.AddSingleton<IUserActions, UserActions>();
             services.AddSingleton<IBuildActionOrchestrator, BuilderOrchestrator>();
             services.AddSingleton<IUserActionOrchestrator, UserActionOrchestrator>();
-            services.AddSingleton<IBuilderTasks, BuilderTasks>();
+            services.AddSingleton<IBuilderTasksOrchestrator, BuilderTasksOrchestrator>();
         }
     }
 }

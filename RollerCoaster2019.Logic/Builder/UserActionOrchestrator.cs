@@ -16,8 +16,8 @@ namespace RollerCoaster2019.Logic.Builder
 
         internal readonly IServiceProvider _serviceProvider;
 
-        internal readonly IBuilderTasks _builderTasks;
-        public UserActionOrchestrator(IBuilderTasks builderTasks,
+        internal readonly IBuilderTasksOrchestrator _builderTasks;
+        public UserActionOrchestrator(IBuilderTasksOrchestrator builderTasks,
                                            IServiceProvider serviceProvider)
         {
             _builderTasks = builderTasks;

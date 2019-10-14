@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace RollerCoaster2019.Logic.Builder
 {
-    public class BuilderTasks : IBuilderTasks
+    public class BuilderTasksOrchestrator : IBuilderTasksOrchestrator
     {
         internal readonly IBuildActionOrchestrator _buildActionOrchestrator;
         internal readonly float UP_PITCH = 90;
         internal readonly float DOWN_PITCH = 270;
         internal readonly float FLAT_PITCH = 0;
 
-        public BuilderTasks(IBuildActionOrchestrator buildActionOrchestrator)
+        public BuilderTasksOrchestrator(IBuildActionOrchestrator buildActionOrchestrator)
         {
             _buildActionOrchestrator = buildActionOrchestrator;
         }
