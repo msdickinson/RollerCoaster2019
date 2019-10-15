@@ -49,7 +49,7 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Stright);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
@@ -79,7 +79,7 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Left);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Left);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
@@ -109,7 +109,7 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Right);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Right);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
@@ -139,7 +139,7 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Up);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Up);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
@@ -169,8 +169,8 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    uut.Build(coaster, BuildActionType.Up);
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Down);
+                    uut.Build(coaster, UserActionType.Up);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Down);
 
                     //Assert
                     Assert.AreEqual(3, observedBuildActionDescriptor.TrackChangeCount);
@@ -200,8 +200,8 @@ namespace RollerCoaster2019.IntegrationTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var x = uut.Build(coaster, BuildActionType.Stright);
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Back);
+                    var x = uut.Build(coaster, UserActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Back);
 
                     //Assert
                     Assert.AreEqual(0, observedBuildActionDescriptor.TrackChangeCount);

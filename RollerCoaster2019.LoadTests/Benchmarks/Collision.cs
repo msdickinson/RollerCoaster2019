@@ -39,7 +39,7 @@ namespace RollerCoaster2019.LoadTests.Benchmarks
         {
             for (int i = 0; i < 5000; i++)
             {
-                _userActions.Build(_coaster, BuildActionType.Stright);
+                _userActions.Build(_coaster, UserActionType.Stright);
             }
         }
 

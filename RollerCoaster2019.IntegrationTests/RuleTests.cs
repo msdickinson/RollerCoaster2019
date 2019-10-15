@@ -27,15 +27,15 @@ namespace RollerCoaster2019.LoadTests
 
                     for (int i = 0; i < 3; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Left);
+                        uut.Build(coaster, UserActionType.Left);
                     }
 
                     for (int i = 0; i < 32; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Stright);
+                        uut.Build(coaster, UserActionType.Stright);
                     }
 
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Stright);
 
                     //Assert
                     Assert.AreEqual(TaskResults.MinX, observedBuildActionDescriptor.BuildActionResult);
@@ -63,14 +63,14 @@ namespace RollerCoaster2019.LoadTests
 
                     for (int i = 0; i < 3; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Right);
+                        uut.Build(coaster, UserActionType.Right);
                     }
 
                     for (int i = 0; i < 10; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Stright);
+                        uut.Build(coaster, UserActionType.Stright);
                     }
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Stright);
 
                     //Assert
                     Assert.AreEqual(TaskResults.MaxX, observedBuildActionDescriptor.BuildActionResult);
@@ -98,12 +98,12 @@ namespace RollerCoaster2019.LoadTests
 
                     for (int i = 0; i < 6; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Left);
+                        uut.Build(coaster, UserActionType.Left);
                     }
 
-                    uut.Build(coaster, BuildActionType.Stright);
-                    uut.Build(coaster, BuildActionType.Stright);
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
+                    uut.Build(coaster, UserActionType.Stright);
+                    uut.Build(coaster, UserActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Stright);
                     
                     //Assert
                     Assert.AreEqual(TaskResults.MinY, observedBuildActionDescriptor.BuildActionResult);
@@ -131,11 +131,11 @@ namespace RollerCoaster2019.LoadTests
 
                     for (int i = 0; i < 44; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Stright);
+                        uut.Build(coaster, UserActionType.Stright);
                     }
 
 
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Stright);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Stright);
 
                     //Assert
                     Assert.AreEqual(TaskResults.MaxY, observedBuildActionDescriptor.BuildActionResult);
@@ -163,14 +163,14 @@ namespace RollerCoaster2019.LoadTests
 
                     for (int i = 0; i < 6; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Stright);
+                        uut.Build(coaster, UserActionType.Stright);
                     }
                     for (int i = 0; i < 23; i++)
                     {
-                        uut.Build(coaster, BuildActionType.Left);
+                        uut.Build(coaster, UserActionType.Left);
                     }
 
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Left);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Left);
 
                     //Assert
                     Assert.AreEqual(TaskResults.Collison, observedBuildActionDescriptor.BuildActionResult);
@@ -195,7 +195,7 @@ namespace RollerCoaster2019.LoadTests
 
                     //Act
                     var coaster = uut.CreateCoaster();
-                    var observedBuildActionDescriptor = uut.Build(coaster, BuildActionType.Down);
+                    var observedBuildActionDescriptor = uut.Build(coaster, UserActionType.Down);
 
                     //Assert
                     Assert.AreEqual(TaskResults.MinZ, observedBuildActionDescriptor.BuildActionResult);

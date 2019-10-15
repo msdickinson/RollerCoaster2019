@@ -19,11 +19,11 @@ namespace RollerCoaster2019.Console
         public async Task Run()
         {
             var coaster = _userActions.CreateCoaster();
-            var buildActions = new List<userActionType>
+            var buildActions = new List<UserActionType>
             {
-                BuildActionType.Stright,
-                BuildActionType.Back,
-                BuildActionType.Stright
+                UserActionType.Stright,
+                UserActionType.Back,
+                UserActionType.Stright
             };
 
             ProcessBuildActions(coaster, buildActions);
